@@ -110,8 +110,13 @@ def generate_ela_image(image_path):
 model = models.resnet18(pretrained=False)
 model.fc = nn.Linear(model.fc.in_features, 2)
 
-model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device("cpu")))
-model.eval()
+if os.path.exists(MODEL_PATH):
+    model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device("cpu")))
+    model.eval()
+    print("Model loaded successfully.")
+else:
+    print(f"Warning: Model file not found at {MODEL_PATH}")
+
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
