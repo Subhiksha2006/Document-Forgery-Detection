@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dataset/
+model/
+ela_outputs/
+uploads/
+outputs/
+temp/
+*.jpg
+*.png
+.env
